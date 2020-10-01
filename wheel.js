@@ -16,14 +16,14 @@ function getRandomPhraseAsArray(arr) {
 }
 
  
-const phraseArray = getRandomPhraseAsArray(phrasesArray);
+const phraseArray = getRandomPhraseAsArray(phrases);
 
 function addPhraseToDisplay(arr) {
 
   for (let i = 0; i < phraseArray.length; i++) {
     const listItem = phraseArray[i];
     const liPhrase = document.createElement('li');
-    liPhrase.textContent = li;
+    liPhrase.textContent = ('li');
     const ul = document.querySelector('#phrase ul');
     ul.appendChild(liPhrase);
 
@@ -36,9 +36,9 @@ function addPhraseToDisplay(arr) {
   }
 }
 
-addPhraseToDisplay(phraseArray);
+addPhraseToDisplay(phrases);
 
-const checkLetter = button => {}
+const checkLetter = button => {
 let check = document.querySelector('li');
 let match = null;
 for (i = 0; i < checkLetter.length; i++){  
@@ -48,6 +48,7 @@ else if (button !== checkLetter){ missed == button;
 
 } else{
 return match;}
+}
 }
 qwerty.addEventListener('click', (e) => {
 checkLetter(e.target.textContent);
