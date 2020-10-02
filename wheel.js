@@ -22,7 +22,7 @@ function addPhraseToDisplay(arr) {
 
   for (let i = 0; i < phraseArray.length; i++) {
     const listItem = phraseArray[i];
-    const liPhrase = document.createElement('li');
+    liPhrase.textContent = phraseArray[i];
     liPhrase.textContent = ('li');
     const ul = document.querySelector('#phrase ul');
     ul.appendChild(liPhrase);
