@@ -18,7 +18,7 @@ function getRandomPhraseAsArray(arr) {
 
 
  
-const phraseArray = getRandomPhraseAsArray(phraseArray);
+const phraseArray = getRandomPhraseAsArray(phrases);
 
 function addPhraseToDisplay(arr) {
 
@@ -64,14 +64,12 @@ e.target.disabled = true;
 })
 
 const checkWin = () => {
-const liLetter = document.classList.add('letter').length;
-const liShow = document.classList.add('show').length;
+const liLetter = document.classList.add('.letter').length;
+const liShow = document.classList.add('.show').length;
 if (liLetter == liShow ){console.log('You win!')
 overlay.classList.add('win');
 overlay.style.display = "flex";
 } 
-
-
 else if (missed >= 5); {console.log('You lose!')};
 overlay.classList.add('lose');
 overlay.style.display = "flex";
