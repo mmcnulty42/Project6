@@ -6,10 +6,10 @@ let button = document.querySelector("#bttn");
 let bttnReset = document.querySelector('.btn__reset');
 bttnReset.addEventListener('click', (e)=> {overlay.style.display = "none";})
 
-let phrases = ['early bid gets the worm', 'a man who stands for nothing will fall for anything', 'teach a man to fish', 'a fool and his money are soon parted', 
+let phrases = ['early bird gets the worm', 'a man who stands for nothing will fall for anything', 'teach a man to fish', 'a fool and his money are soon parted', 
 'back to square one'];
 
-function getRandomPhraseAsArray(arr) {
+function getRandomPhraseAsArray() {
   const randomIndex = Math.floor(Math.random() * phrases.length);
   const randomPhrase = phrases[randomIndex];
   const phraseAsCharacters = randomPhrase.split('');
@@ -18,7 +18,7 @@ function getRandomPhraseAsArray(arr) {
 
 
  
-const phraseArray = getRandomPhraseAsArray(phrases);
+const phraseArray = getRandomPhraseAsArray();
 
 function addPhraseToDisplay(arr) {
 
@@ -39,40 +39,53 @@ function addPhraseToDisplay(arr) {
 
 addPhraseToDisplay(phraseArray);
 
+function checkLetter(button) {
+  let letterLi = document.querySelectorAll('.letter');
+  let match = null;
 
-const checkLetter = button => {
-let check = document.querySelectorAll('.letter');
-let i = 0;
-for (i = 0; i < checkLetter.length; i++){  
-if (button === check[i].innerHTML) {check[i].className += "show";
-let match = check[i];
-return match;
-
-} 
-} return null;
+  for (let i = 0; i < letterLi.length; i++) {
+    let letters = letterLi[i];
+    let letterMatch = letters.textContent;
+    if (button === letterMatch) {
+      letters.classList.add('show');
+      match = true;
+    }
+  }
+  return match;
 }
 
 qwerty.addEventListener('click', (e) => {
-checkLetter(e.target.textContent);
-const btns = document.querySelectorAll('button');
-for (i = 0; i < btns.length; i++){ if (e.target === btns[i]) {
-e.target.classList.add('chosen');
-e.target.disabled = true;
-} else (btns = "null") 
-}
+    const newLocal_2 = checkLetter(e.target.textContent);
+    if (e.target.tagName === 'BUTTON') {
+      const newLocal = e.target.classList.add('chosen');
+      let match = checkLetter(e.target.textContent);
+    }
+    const btns = document.querySelectorAll('button');
+    for (i = 0; i < btns.length; i++) {
+      if (e.target === btns[i]) {
+        e.target.classList.add('chosen');
+        e.target.disabled = true;
+      }
+      else
+        (button = "null");
+    }
+checkWin()
+  }
+  
+)
 
-})
+const newLocal = overlay.className = 'lose';
+function checkWin (){
+let letterFirst = document.querySelectorAll('.letter');
 
-const checkWin = () => {
-const liLetter = document.classList.add('.letter').length;
-const liShow = document.classList.add('.show').length;
-if (liLetter == liShow ){console.log('You win!')
-overlay.classList.add('win');
+let showLi = document.querySelectorAll('.show');
+if (letterFirst.length == showLi.length)
+  {overlay.className = 'win';
+document.querySelector('h2.title').innerHTML = 'You win bro!';
 overlay.style.display = "flex";
-} 
-else if (missed >= 5); {console.log('You lose!')};
-overlay.classList.add('lose');
-overlay.style.display = "flex";
-
 }
-
+else if(missed >= 5);{
+  document.querySelector('h2.title').innerHTML = 'Sorry bro, you lose!';
+  overlay.style.display = 'flex';
+}
+}
