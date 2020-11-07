@@ -53,39 +53,46 @@ function checkLetter(button) {
   }
   return match;
 }
+checkLetter();
 
 qwerty.addEventListener('click', (e) => {
     const newLocal_2 = checkLetter(e.target.textContent);
     if (e.target.tagName === 'BUTTON') {
       const newLocal = e.target.classList.add('chosen');
+               
       let match = checkLetter(e.target.textContent);
+    }
+    const hearts = document.querySelectorAll('.tries img');
+    if(!match) {
+      hearts[missed].src = 'images/lostHeart.png';
+      missed++;
     }
     const btns = document.querySelectorAll('button');
     for (i = 0; i < btns.length; i++) {
       if (e.target === btns[i]) {
         e.target.classList.add('chosen');
         e.target.disabled = true;
-      }
-      else
-        (button = "null");
-    }
-checkWin()
+          }
+checkWin();
   }
   
-)
+});
 
-const newLocal = overlay.className = 'lose';
-function checkWin (){
-let letterFirst = document.querySelectorAll('.letter');
+function checkWin() {
+    let letterFirst = document.querySelectorAll('.letter');
 
-let showLi = document.querySelectorAll('.show');
-if (letterFirst.length == showLi.length)
-  {overlay.className = 'win';
-document.querySelector('h2.title').innerHTML = 'You win bro!';
-overlay.style.display = "flex";
-}
-else if(missed >= 5);{
-  document.querySelector('h2.title').innerHTML = 'Sorry bro, you lose!';
-  overlay.style.display = 'flex';
-}
+    let showLi = document.querySelectorAll('.show');
+    if (letterFirst.length == showLi.length) {
+      overlay.className = 'win';
+      document.querySelector('h2.title').innerHTML = 'You win!';
+      overlay.style.display = "flex";
+    }
+
+    else
+      (missed >= 5)
+    {
+     
+      document.querySelector('h2.title').innerHTML = 'Sorry you lose!';
+      overlay.style.display = 'flex';
+    }
 }
