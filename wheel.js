@@ -4,10 +4,13 @@ let overlay = document.getElementById('overlay');
 let missed = 0;
 let button = document.querySelector("#bttn");
 let bttnReset = document.querySelector('.btn__reset');
-bttnReset.addEventListener('click', (e)=> {overlay.style.display = "none";})
+bttnReset.addEventListener('click', (e) => {
+  overlay.style.display = "none";
+})
 
-let phrases = ['early bird gets the worm', 'a man who stands for nothing will fall for anything', 'teach a man to fish', 'a fool and his money are soon parted', 
-'back to square one'];
+let phrases = ['early bird gets the worm', 'a man who stands for nothing will fall for anything', 'teach a man to fish', 'a fool and his money are soon parted',
+  'back to square one'
+];
 
 function getRandomPhraseAsArray() {
   const randomIndex = Math.floor(Math.random() * phrases.length);
@@ -17,7 +20,7 @@ function getRandomPhraseAsArray() {
 }
 
 
- 
+
 const phraseArray = getRandomPhraseAsArray();
 
 function addPhraseToDisplay(arr) {
@@ -56,42 +59,29 @@ function checkLetter(button) {
 checkLetter();
 
 qwerty.addEventListener('click', (e) => {
-    const newLocal_2 = checkLetter(e.target.textContent);
-    if (e.target.tagName === 'BUTTON') {
-      const newLocal = e.target.classList.add('chosen');
-               
-      let match = checkLetter(e.target.textContent);
-    }
+  if (e.target.tagName === 'BUTTON') {
+    let match = checkLetter(e.target.textContent);
+    e.target.classList.add('chosen');
+    e.target.disabled = true;
     const hearts = document.querySelectorAll('.tries img');
     if(!match) {
       hearts[missed].src = 'images/lostHeart.png';
       missed++;
     }
-    const btns = document.querySelectorAll('button');
-    for (i = 0; i < btns.length; i++) {
-      if (e.target === btns[i]) {
-        e.target.classList.add('chosen');
-        e.target.disabled = true;
-          }
-checkWin();
+    checkWin();
   }
-  
 });
 
 function checkWin() {
-    let letterFirst = document.querySelectorAll('.letter');
+  let letterFirst = document.querySelectorAll('.letter');
 
-    let showLi = document.querySelectorAll('.show');
-    if (letterFirst.length == showLi.length) {
-      overlay.className = 'win';
-      document.querySelector('h2.title').innerHTML = 'You win!';
-      overlay.style.display = "flex";
-    }
-
-    else
-      (missed >= 5)
-    {
-     
+  let showLi = document.querySelectorAll('.show');
+  if (letterFirst.length == showLi.length) {
+    overlay.className = 'win';
+    document.querySelector('h2.title').innerHTML = 'You win!';
+    overlay.style.display = "flex";
+  } else if (missed >= 5) {
+    overlay.className = 'lose';
       document.querySelector('h2.title').innerHTML = 'Sorry you lose!';
       overlay.style.display = 'flex';
     }
